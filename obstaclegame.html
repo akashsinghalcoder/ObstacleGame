@@ -1,0 +1,148 @@
+
+
+<!DOCTYPE html>
+<html>
+<style>
+
+#animate {
+  width: 50px;
+  height: 50px;
+  position: relative;
+ 
+  background-color: red;
+}
+#obstacle {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  background-color: red;
+}
+body {
+    height: 7500px;
+    width: 5000px;
+}
+</style>
+<body>
+<p>
+<button onclick="myMove()">Click Me</button>
+</p> 
+
+
+<div id ="animate">cursor</div>
+<div id ="obstacle">obstacle</div>
+
+<script>
+function myMove() {
+var obs = document.getElementById("obstacle");
+obsy=380;
+obs.style.top=obsy+'px';
+var obsx=Math.floor((Math.random() * 100) + 1)+300;
+obs.style.left=obsx+'px';
+
+
+  var posx = 0;
+  var posy=350;
+  var elem = document.getElementById("animate");
+  elem.style.top=posy+'px';
+  var id = setInterval(framex, 5);
+ 
+ document.onkeyup = function(){
+ 
+ if(posy!=350)
+  {
+    return;
+  }
+      posy=posy-200; 
+      elem.style.top = posy + 'px';
+      var temp=setInterval(godownnow,200);
+      function godownnow()
+      {
+            if(posy==350)
+                {
+                clearInterval(temp);
+             
+                }
+                else
+                {
+                posy=posy+20; 
+                elem.style.top = posy + 'px';
+                }
+      }
+    
+ 
+ };
+ 
+  function framex() {
+  
+  var rect = elem.getBoundingClientRect();
+ console.log(rect.top, rect.right, rect.bottom, rect.left);
+ 
+ var obst=obs.getBoundingClientRect(); 
+ if(rect.bottom>obst.top&&rect.bottom<obst.bottom&&rect.right>obst.left&&rect.right<obst.right)
+ {
+    alert("Game Over");
+ }
+ else if(rect.left<obst.right&&rect.left>obst.left&&rect.bottom>obst.top&&rect.bottom<obst.bottom)
+ {
+  alert("Game Over");
+ }
+ 
+ 
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+  posx++;
+  if(posx%500==0)
+  {
+  window.scrollBy(500,0);
+  obsx=Math.floor((Math.random() * 100) + 1)+300;
+  obs.style.left=obsx+'px';
+  
+  
+ } 
+ elem.style.left=posx+'px';
+ 
+  }
+  
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
