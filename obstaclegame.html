@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html>
 <style>
@@ -15,7 +14,7 @@
   width: 50px;
   height: 50px;
   position: fixed;
-  background-color: red;
+  background-color: green;
 }
 body {
     height: 7500px;
@@ -73,7 +72,8 @@ obs.style.left=obsx+'px';
  };
  
   function framex() {
-  
+//This block checks for overlapping of cursor with obstacle 
+
   var rect = elem.getBoundingClientRect();
  console.log(rect.top, rect.right, rect.bottom, rect.left);
  
@@ -81,10 +81,20 @@ obs.style.left=obsx+'px';
  if(rect.bottom>obst.top&&rect.bottom<obst.bottom&&rect.right>obst.left&&rect.right<obst.right)
  {
     alert("Game Over");
+    clearInterval(id);
+    return;
  }
  else if(rect.left<obst.right&&rect.left>obst.left&&rect.bottom>obst.top&&rect.bottom<obst.bottom)
  {
   alert("Game Over");
+  clearInterval(id);
+  return;
+ }
+ else if(rect.right>obst.left&&rect.right<obst.right&&rect.top>obst.top&&rect.top<obst.bottom)
+ {
+ alert("Game Over");
+  clearInterval(id);
+  return;
  }
  
  
@@ -123,26 +133,12 @@ obs.style.left=obsx+'px';
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
 
 
 
 
  
+
 
 
